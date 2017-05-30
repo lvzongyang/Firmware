@@ -90,7 +90,7 @@ RCLoss::on_activation()
 void
 RCLoss::on_active()
 {
-	if (is_mission_item_reached()) {
+	if (is_navigator_item_reached()) {
 		advance_rcl();
 		set_rcl_item();
 	}
@@ -140,7 +140,7 @@ RCLoss::set_rcl_item()
 	reset_mission_item_reached();
 
 	/* convert mission item to current position setpoint and make it valid */
-	mission_item_to_position_setpoint(&_mission_item, &pos_sp_triplet->current);
+	navigator_item_to_position_setpoint(&_navigator_item, &pos_sp_triplet->current);
 	pos_sp_triplet->next.valid = false;
 
 	_navigator->set_position_setpoint_triplet_updated();
